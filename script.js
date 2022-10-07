@@ -5,28 +5,43 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    console.log(`Player chose: ${playerSelection}\nComputer chose: ${computerSelection}`)
+
     if (playerSelection === computerSelection) {
         return "It's a draw."
     } else if (
         playerSelection === 'rock' && computerSelection === 'paper' ||
         playerSelection === 'paper' && computerSelection === 'scissors' || 
         playerSelection === 'scissors' && computerSelection === 'rock') {
-        return `You lose. Computer chose: ${computerSelection} which beats player choice: ${playerSelection}`
+        alert("You lost the round.")
+        return false
     } else if (
         computerSelection === 'rock' && playerSelection === 'paper' ||
         computerSelection === 'paper' && playerSelection === 'scissors' || 
         computerSelection === 'scissors' && playerSelection === 'rock') {
-        return `You Win! You chose: ${playerSelection}, which beats computer choice: ${computerSelection}`
+        alert("You Won the round!")
+        return true
     } else {
         return 'Invalid input. Please choose "rock", "paper" or "scissors", ONLY.'
     }
 }
 
 function game() {
+    let computerScore = 0;
+    let playerScore = 0;
 
-const computerSelection = getComputerChoice()
-const playerSelection = playerChoice = prompt("rock, paper or scissors?").toLowerCase()
-console.log(playRound(playerSelection, computerSelection)) // Output
+    const computerSelection = getComputerChoice()
+    const playerSelection = playerChoice = prompt("rock, paper or scissors?").toLowerCase()
+
+    let playerScored = playRound(playerSelection, computerSelection) // Output
+    if (playerScored === false) {
+        computerScore += 1
+    } else {
+        playerScore += 1
+    }
+    console.log(playerScore)
+    console.log(computerScore)
+
 }
 
 game()
