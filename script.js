@@ -31,17 +31,16 @@ function game() {
     let playerScore = 0;
 
     const computerSelection = getComputerChoice()
-    const playerSelection = playerChoice = prompt("rock, paper or scissors?").toLowerCase()
+    const playerSelection = prompt("rock, paper or scissors?").toLowerCase()
 
-    let playerScored = playRound(playerSelection, computerSelection) // Output
-    if (playerScored === false) {
+    let didPlayerScore = playRound(playerSelection, computerSelection) // Output
+
+    if (didPlayerScore === false) {
         computerScore += 1
     } else {
         playerScore += 1
     }
     console.log(playerScore)
     console.log(computerScore)
-
 }
-
 game()
