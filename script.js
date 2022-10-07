@@ -30,7 +30,7 @@ function game() {
     }
 
     function checkForWinner(playerScore, computerScore) {
-        console.clear(); // Clear console prior to displaying final score
+        console.clear();
         console.log(`Player final score: ${playerScore}`);
         console.log(`Computer final score: ${computerScore}`);
 
@@ -55,7 +55,7 @@ function game() {
             "rock, paper or scissors?"
         ).toLowerCase();
 
-        let didPlayerScore = playRound(playerSelection, computerSelection); // Output
+        let didPlayerScore = playRound(playerSelection, computerSelection);
 
         function checkAndUpdateScore(validate) {
             if (didPlayerScore === false) {
@@ -78,6 +78,3 @@ function game() {
 }
 
 game();
-
-// KNOWN BUG: Player can choose anything other than string and it will be processed.
-//      Need to catch edge case(s) for anything other than strings, when prompting for player input.
