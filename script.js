@@ -5,6 +5,23 @@ function game() {
         return RPS[computerChoice];
     }
 
+    function getPlayerChoice() {
+        let playerChoice = prompt("rock, paper or scissors?").toLowerCase();
+
+        if (
+            playerChoice === "rock" ||
+            playerChoice === "paper" ||
+            playerChoice === "scissors"
+        ) {
+            return playerChoice;
+        } else {
+            alert(
+                "Invalid entry detected. Please enter only from the available choices."
+            );
+            return getPlayerChoice();
+        }
+    }
+
     function playRound(playerSelection, computerSelection) {
         console.log(
             `Player chose: ${playerSelection}\nComputer chose: ${computerSelection}`
@@ -24,8 +41,6 @@ function game() {
             (computerSelection === "scissors" && playerSelection === "rock")
         ) {
             return true;
-        } else {
-            return 'Invalid input. Please choose "rock", "paper" or "scissors", ONLY.';
         }
     }
 
@@ -51,9 +66,7 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
         const computerSelection = getComputerChoice();
-        const playerSelection = prompt(
-            "rock, paper or scissors?"
-        ).toLowerCase();
+        const playerSelection = getPlayerChoice();
 
         let didPlayerScore = playRound(playerSelection, computerSelection);
 
