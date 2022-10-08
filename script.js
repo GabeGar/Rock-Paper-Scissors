@@ -68,21 +68,21 @@ function game() {
         const computerSelection = getComputerChoice();
         const playerSelection = getPlayerChoice();
 
-        let didPlayerScore = playRound(playerSelection, computerSelection);
+        let playerScored = playRound(playerSelection, computerSelection);
 
-        function checkAndUpdateScore(validate) {
-            if (didPlayerScore === false) {
-                alert("Round lost. Computer scored.");
-                computerScore += 1;
-            } else if (didPlayerScore === true) {
+        function updateScore(validate) {
+            if (playerScored) {
                 alert("Round won! You scored.");
                 playerScore += 1;
+            } else if (!playerScored) {
+                alert("Round lost. Computer scored.");
+                computerScore += 1;
             } else {
                 alert("Round Draw");
             }
         }
 
-        checkAndUpdateScore(didPlayerScore);
+        updateScore(playerScored);
         console.log(`Players current score: ${playerScore}`);
         console.log(`Computers current score: ${computerScore}`);
     }
