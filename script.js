@@ -58,11 +58,15 @@ function game() {
         }
     }
 
+    function printCurrentScore(playerScore, computerScore) {
+        console.log(`Players current score: ${playerScore}`);
+        console.log(`Computers current score: ${computerScore}`);
+    }
+
     let computerScore = 0;
     let playerScore = 0;
 
-    console.log(`Players current score: ${playerScore}`);
-    console.log(`Computers current score: ${computerScore}`);
+    printCurrentScore(playerScore, computerScore);
 
     for (let i = 0; i < 5; i++) {
         const computerSelection = getComputerChoice();
@@ -83,8 +87,7 @@ function game() {
         }
 
         updateScore(playerScored);
-        console.log(`Players current score: ${playerScore}`);
-        console.log(`Computers current score: ${computerScore}`);
+        printCurrentScore(playerScore, computerScore);
     }
 
     checkForWinner(playerScore, computerScore);
