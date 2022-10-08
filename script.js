@@ -87,6 +87,7 @@ function game() {
         }
 
         updateScore(playerScored);
+        console.clear();
         printCurrentScore(playerScore, computerScore);
     }
 
