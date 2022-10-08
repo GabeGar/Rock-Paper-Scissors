@@ -1,6 +1,6 @@
 # rock-paper-scissors
 
-Basic rock paper scissors game ---> to be returned to later on in the course, for updating.
+Basic rock paper scissors game ---> to be returned to later on in The Odin Project course, for updating.
 
 **_ KNOWN BUG(s)_**
 
