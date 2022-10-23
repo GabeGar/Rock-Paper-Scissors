@@ -1,12 +1,22 @@
 # rock-paper-scissors
 
-Basic rock paper scissors game ---> to be returned to later on in The Odin Project course, for updating.
+**_*RPS V2*_**
 
-**_ KNOWN BUG(s)_**
+**_ Feature to be added _**
 
-None
+1. Ability to reset game, with a button that only appears, after the current, game has ended.
 
-**_ RESOLVED _**
+**_ Skills Learned _**
+Core Skill: Document Object Model (DOM) - Manipulation
 
-~~1. Player can choose anything other than string and it will be processed.~~
-~~Need to catch edge case(s) for anything other than strings, when prompting for player input.~~
+Via:
+
+1. Targeting elements in HTML via query selectors.
+
+2. Creating & replacing/deleting elements, both existent and non-existent.
+
+3. Manipulating element attributes.
+
+4. Attaching event listeners to elements.
+
+5. Implementing callback functions to handle event listeners.
