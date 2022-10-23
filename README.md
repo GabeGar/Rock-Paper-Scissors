@@ -5,6 +5,7 @@
 **_ Feature to be added _**
 
 1. Ability to reset game, with a button that only appears, after the current, game has ended.
+2. Include Images based on player choice and computer choice.
 
 **_ Skills Learned _**
 Core Skill: Document Object Model (DOM) - Manipulation
