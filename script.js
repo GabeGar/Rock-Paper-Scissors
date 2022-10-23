@@ -76,7 +76,6 @@ function game() {
     }
 
     //Main game function
-
     function playRound(playerEvent) {
         const playerSelection = playerEvent.target.textContent.toLowerCase();
         const compSelection = getComputerChoice();
@@ -84,6 +83,7 @@ function game() {
         let status = getRoundStatus(playerSelection, compSelection);
         updateScore(status);
         let isGameOver = checkWinner(playerScore, computerScore);
+
         if (isGameOver) {
             allButtons.forEach((button) =>
                 button.removeEventListener("click", playRound)
