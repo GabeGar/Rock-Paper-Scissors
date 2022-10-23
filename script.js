@@ -55,13 +55,14 @@ function game() {
 
     function playerWon() {
         resultsContainer.removeChild(roundStatus);
-        announceWinner.textContent = "Player has Won the Game! Congrats!";
+        announceWinner.textContent = "Player has won the game! Congrats!";
         resultsContainer.appendChild(announceWinner);
     }
 
     function computerWon() {
         resultsContainer.removeChild(roundStatus);
-        announceWinner.textContent = "Computer has Won the Game. Oof!";
+        announceWinner.textContent =
+            "Computer has won the game. Better luck next time!";
         resultsContainer.appendChild(announceWinner);
     }
 
