@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#btn {
+    padding: 0.7em;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+    gap: 12px;
+}
