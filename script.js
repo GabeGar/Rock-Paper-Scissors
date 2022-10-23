@@ -1,97 +1,47 @@
-function game() {
-    function getComputerChoice() {
-        const RPS = ["rock", "paper", "scissors"];
-        let computerChoice = Math.floor(Math.random() * RPS.length);
-        return RPS[computerChoice];
-    }
+const allButtons = document.querySelectorAll("#btn");
+const resultsContainer = document.querySelector(".results");
+const playerDiv = document.querySelector("#player");
+const computerDiv = document.querySelector("#computer");
+const roundStatus = document.querySelector("#round-status");
 
-    function getPlayerChoice() {
-        let playerChoice = prompt("rock, paper or scissors?").toLowerCase();
+let playerScore = 0;
+let computerScore = 0;
 
-        if (
-            playerChoice === "rock" ||
-            playerChoice === "paper" ||
-            playerChoice === "scissors"
-        ) {
-            return playerChoice;
-        } else {
-            alert(
-                "Invalid entry detected. Please enter only from the available choices."
-            );
-            return getPlayerChoice();
-        }
-    }
-
-    function playRound(playerSelection, computerSelection) {
-        console.log(
-            `Player chose: ${playerSelection}\nComputer chose: ${computerSelection}`
-        );
-
-        if (playerSelection === computerSelection) {
-            return;
-        } else if (
-            (playerSelection === "rock" && computerSelection === "paper") ||
-            (playerSelection === "paper" && computerSelection === "scissors") ||
-            (playerSelection === "scissors" && computerSelection === "rock")
-        ) {
-            return false;
-        } else if (
-            (computerSelection === "rock" && playerSelection === "paper") ||
-            (computerSelection === "paper" && playerSelection === "scissors") ||
-            (computerSelection === "scissors" && playerSelection === "rock")
-        ) {
-            return true;
-        }
-    }
-
-    function checkForWinner(playerScore, computerScore) {
-        console.clear();
-        console.log(`Player final score: ${playerScore}`);
-        console.log(`Computer final score: ${computerScore}`);
-
-        if (playerScore === computerScore) {
-            console.log("Well would you look at that? It's a complete draw.");
-        } else if (playerScore < computerScore) {
-            console.log("Sorry player. Computer has won the game.");
-        } else {
-            console.log("Player has won the game! Congratulations!");
-        }
-    }
-
-    function printCurrentScore(playerScore, computerScore) {
-        console.log(`Players current score: ${playerScore}`);
-        console.log(`Computers current score: ${computerScore}`);
-    }
-
-    let computerScore = 0;
-    let playerScore = 0;
-
-    printCurrentScore(playerScore, computerScore);
-
-    for (let i = 0; i < 5; i++) {
-        const computerSelection = getComputerChoice();
-        const playerSelection = getPlayerChoice();
-
-        let playerScored = playRound(playerSelection, computerSelection);
-
-        function updateScore(validate) {
-            if (playerScored) {
-                alert("Round won! You scored.");
-                playerScore += 1;
-            } else if (!playerScored) {
-                alert("Round lost. Computer scored.");
-                computerScore += 1;
-            } else {
-                alert("Round Draw");
-            }
-        }
-
-        updateScore(playerScored);
-        console.clear();
-        printCurrentScore(playerScore, computerScore);
-    }
-
-    checkForWinner(playerScore, computerScore);
+function getComputerChoice() {
+    const RPS = ["rock", "paper", "scissors"];
+    let computerChoice = Math.floor(Math.random() * RPS.length);
+    return RPS[computerChoice];
 }
 
-game();
+function clearRoundStatus() {
+    roundStatus.textContent = ""; //Clears status before updating
+}
+
+function getRoundStatus(playerChoice, computerChoice) {
+    clearRoundStatus();
+    roundStatus.style.fontSize = "24px";
+    roundStatus.style.fontWeight = "bold";
+
+    if (computerChoice === playerChoice) {
+        roundStatus.textContent = "Draw";
+    } else if (
+        (computerChoice === "rock" && playerChoice === "paper") ||
+        (computerChoice === "paper" && playerChoice === "scissors") ||
+        (computerChoice === "scissors" && playerChoice === "rock")
+    ) {
+        roundStatus.textContent = "Player Won The Round";
+    } else {
+        roundStatus.textContent = "Computer Won The Round";
+    }
+}
+
+function playRound(playerEvent) {
+    const playerSelection = playerEvent.target.textContent.toLowerCase();
+    const compSelection = getComputerChoice();
+
+    getRoundStatus(playerSelection, compSelection);
+}
+
+for (let button of allButtons) {
+    button.addEventListener("click", playRound);
+}
