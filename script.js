@@ -1,9 +1,13 @@
 function game() {
     const allButtons = document.querySelectorAll("#btn");
     const resultsContainer = document.querySelector(".results");
-    const playerDiv = document.querySelector("#player");
-    const computerDiv = document.querySelector("#computer");
+    const playerScoreDiv = document.querySelector("#player");
+    const computerScoreDiv = document.querySelector("#computer");
     const roundStatus = document.querySelector("#round-status");
+    const playerChose = document.querySelector("#player-choice");
+    const computerChose = document.querySelector("#computer-choice");
+
+    //New element(s)
     const announceWinner = document.createElement("div");
 
     // Styles
@@ -48,8 +52,8 @@ function game() {
         } else if (status.textContent === "Round Lost") {
             computerScore += 1;
         }
-        playerDiv.textContent = `Player Score: ${playerScore}`;
-        computerDiv.textContent = `Computer Score: ${computerScore}`;
+        playerScoreDiv.textContent = `Player Score: ${playerScore}`;
+        computerScoreDiv.textContent = `Computer Score: ${computerScore}`;
         return [playerScore, computerScore]; // returns both scores as an array
     }
 
@@ -76,10 +80,17 @@ function game() {
         } else return false;
     }
 
+    function displayChosen(player, computer) {
+        playerChose.textContent = `Player Chose: ${player.toUpperCase()}`;
+        computerChose.textContent = `Computer Chose: ${computer.toUpperCase()}`;
+    }
+
     //Main game function
     function playRound(playerEvent) {
         const playerSelection = playerEvent.target.textContent.toLowerCase();
         const compSelection = getComputerChoice();
+
+        displayChosen(playerSelection, compSelection);
 
         let status = getRoundStatus(playerSelection, compSelection);
         updateScore(status);
