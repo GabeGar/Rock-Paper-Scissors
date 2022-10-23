@@ -4,8 +4,13 @@ const playerDiv = document.querySelector("#player");
 const computerDiv = document.querySelector("#computer");
 const roundStatus = document.querySelector("#round-status");
 
+//Global Scores
 let playerScore = 0;
 let computerScore = 0;
+
+// Styles
+roundStatus.style.fontSize = "24px";
+roundStatus.style.fontWeight = "bold";
 
 function getComputerChoice() {
     const RPS = ["rock", "paper", "scissors"];
@@ -19,8 +24,6 @@ function clearRoundStatus() {
 
 function getRoundStatus(playerChoice, computerChoice) {
     clearRoundStatus();
-    roundStatus.style.fontSize = "24px";
-    roundStatus.style.fontWeight = "bold";
 
     if (computerChoice === playerChoice) {
         roundStatus.textContent = "Draw";
@@ -29,17 +32,32 @@ function getRoundStatus(playerChoice, computerChoice) {
         (computerChoice === "paper" && playerChoice === "scissors") ||
         (computerChoice === "scissors" && playerChoice === "rock")
     ) {
-        roundStatus.textContent = "Player Won The Round";
+        roundStatus.textContent = "Round Won";
     } else {
-        roundStatus.textContent = "Computer Won The Round";
+        roundStatus.textContent = "Round Lost";
     }
+    return roundStatus;
 }
+
+function updateScore(status) {
+    if (status.textContent === "Draw") return;
+    else if (status.textContent === "Round Won") {
+        playerScore += 1;
+    } else if (status.textContent === "Round Lost") {
+        computerScore += 1;
+    }
+    playerDiv.textContent = `Player Score: ${playerScore}`;
+    computerDiv.textContent = `Computer Score: ${computerScore}`;
+}
+
+//Main game function
 
 function playRound(playerEvent) {
     const playerSelection = playerEvent.target.textContent.toLowerCase();
     const compSelection = getComputerChoice();
 
-    getRoundStatus(playerSelection, compSelection);
+    let status = getRoundStatus(playerSelection, compSelection);
+    updateScore(status);
 }
 
 for (let button of allButtons) {
