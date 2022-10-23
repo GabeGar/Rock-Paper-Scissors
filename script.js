@@ -1,6 +1,6 @@
 function game() {
     const allButtons = document.querySelectorAll("#btn");
-    const resultsContainer = document.querySelector(".results");
+    const resultsContainer = document.querySelector(".results-container");
     const playerScoreDiv = document.querySelector("#player");
     const computerScoreDiv = document.querySelector("#computer");
     const roundStatus = document.querySelector("#round-status");
@@ -54,7 +54,6 @@ function game() {
         }
         playerScoreDiv.textContent = `Player Score: ${playerScore}`;
         computerScoreDiv.textContent = `Computer Score: ${computerScore}`;
-        return [playerScore, computerScore]; // returns both scores as an array
     }
 
     function playerWon() {
