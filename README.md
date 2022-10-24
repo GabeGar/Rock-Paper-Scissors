@@ -2,10 +2,6 @@
 
 **_*RPS V2*_**
 
-**_ Feature to be added _**
-
-1. Ability to reset game, with a button that only appears, after the current, game has ended.
-
 **_ Skills Learned _**
 Core Skill: Document Object Model (DOM) - Manipulation
 
