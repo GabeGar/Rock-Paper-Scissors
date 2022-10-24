@@ -95,7 +95,8 @@ function game() {
         } else if (computerScore === 5 && playerScore < 5) {
             computerWon();
             return true;
-        } else return false;
+        }
+        return;
     }
 
     function displayChosenChoices(playerChoice, computerChoice) {
