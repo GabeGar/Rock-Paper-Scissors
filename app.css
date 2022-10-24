@@ -20,3 +20,8 @@ body {
     margin-top: 1.5em;
     gap: 12px;
 }
+
+.choice-container {
+    display: flex;
+    gap: 35em;
+}
