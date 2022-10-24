@@ -49,13 +49,7 @@ function game() {
         return RPS[computerChoice];
     }
 
-    function clearRoundStatus() {
-        roundStatus.textContent = ""; //Clears status before updating
-    }
-
     function getRoundStatus(playerChoice, computerChoice) {
-        clearRoundStatus();
-
         if (computerChoice === playerChoice) {
             roundStatus.textContent = "Draw";
         } else if (
